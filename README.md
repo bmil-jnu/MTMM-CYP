@@ -1,4 +1,4 @@
-# MTMM-CYP: Prediction of Cytochrome P450 Isoform Inhibitors through Multi-task Learning with Multiple Molecular Representations'
+# MTMM-CYP: Prediction of Cytochrome P450 Isoform Inhibitors through Multi-task Learning with Multiple Molecular Representations
 
 Authors: Subhin Seomun, Sunyong Yoo
 
@@ -9,7 +9,7 @@ This project introduces MTMM, a multi-task learning-based multi-representation m
 - **[Molecular substructure Analysis](https://github.com/username/repository-name/tree/main/analysis/gradcam)**: Code and analysis results generated with Grad-CAM.
 - **[Figures](https://github.com/bmil-jnu/MTMM-CYP/tree/main/Figures)**: High-resolution figures used throughout the paper.
 
-## Dependencies
+## Dependency
 The project has the following dependencies:
 
 - 'Python==3.12.5'
