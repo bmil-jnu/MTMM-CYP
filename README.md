@@ -4,15 +4,8 @@ This repository contains all the materials for the 'MTMM-CYP: Prediction of Cyto
 It includes the MTMM dataset, MTMM source code, Grad-CAM analysis, and the high-resolution figures used in the paper.
 Authors: Subhin Seomun, Sunyong Yoo
 
-## Table of Contents
-- [Overview](#overview)
-- [Direct File Links](#direct-file-links)
-- [Dependencies](#dependencies)
-- [Installation](#installation)
-- [Contacts](#contacts)
-
 ## Overview
-This project introduces the MTMM method, which [provide a brief description of your research objectives and key results]. The repository contains:
+This project introduces MTMM, a multi-task learning-based multi-representation molecular framework that integrates graph, convolutional, and transformer-based features to accurately predict CYP450 isoform inhibitors and interpret their inhibitory mechanisms using Grad-CAM. The repository contains:
 - **Data:** The dataset used in the paper.
 - **MTMM Source Code:** The implementation of the MTMM algorithm.
 - **Grad-CAM Analysis:** Code and analysis results generated with Grad-CAM.
