@@ -1,0 +1,143 @@
+# CYP450 Docking & MD Simulation Figure Scripts
+
+Python scripts for generating publication-quality figures from
+AutoDock4 docking and GROMACS MD simulation results for
+LCZ–CYP3A4 and LCZ–CYP1A2 complexes.
+
+---
+
+## Requirements
+
+- Python 3.x
+- matplotlib
+- numpy
+```bash
+pip install matplotlib numpy
+```
+
+---
+
+## Scripts
+
+| Script | Description | Output |
+|---|---|---|
+| `plip_2d_interaction.py` | PLIP 2D protein–ligand interaction diagrams | `LCZ_CYP3A4_PLIP_2D.png`, `LCZ_CYP1A2_PLIP_2D.png` |
+| `md_figure.py` | Backbone RMSD + per-residue Cα RMSF plots (50 ns) | `MD_CYP3A4_50ns_final.png`, `MD_CYP1A2_50ns_final.png` |
+| `chimerax_scripts.py` | Generates `.cxc` scripts for UCSF ChimeraX 3D visualization | `viz_CYP3A4_docking.cxc`, `viz_CYP1A2_docking.cxc` |
+
+---
+
+## Usage
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-repo/MTMM-CYP.git
+cd MTMM-CYP
+```
+
+### 2. PLIP 2D Interaction Diagrams
+
+Generates 2D interaction diagrams based on PLIP v2.4.0 analysis
+of AutoDock4 top-ranked docking poses.
+```bash
+python3 plip_2d_interaction.py
+```
+
+Output is saved to:
+```
+C:/Users/user/Downloads/docking_viz/LCZ_CYP3A4_PLIP_2D.png
+C:/Users/user/Downloads/docking_viz/LCZ_CYP1A2_PLIP_2D.png
+```
+
+### 3. MD Simulation Figures (RMSD + RMSF)
+
+Generates backbone RMSD and per-residue Cα RMSF figures
+from 50 ns GROMACS MD simulation trajectories.
+
+**Required input files:**
+
+| File | Path |
+|---|---|
+| CYP3A4 RMSD | `~/docking_project/MD/LCZ_CYP3A4_v3/rmsd_protein.xvg` |
+| CYP3A4 RMSF | `~/docking_project/MD/LCZ_CYP3A4_v3/rmsf.xvg` |
+| CYP1A2 RMSD | `~/docking_project/MD/LCZ_CYP1A2/rmsd_protein.xvg` |
+| CYP1A2 RMSF | `~/docking_project/MD/LCZ_CYP1A2/rmsf.xvg` |
+
+Generate input files using GROMACS:
+```bash
+# PBC correction
+echo -e "1\n0" | gmx trjconv -s md.tpr -f md.xtc \
+    -o md_noPBC.xtc -pbc mol -center
+
+# Backbone RMSD
+echo -e "4\n4" | gmx rms -s md.tpr -f md_noPBC.xtc \
+    -o rmsd_protein.xvg -tu ns
+
+# Per-residue Cα RMSF
+echo "3" | gmx rmsf -s md.tpr -f md_noPBC.xtc \
+    -o rmsf.xvg -res
+```
+
+Then run:
+```bash
+python3 md_figure.py
+```
+
+Output is saved to:
+```
+C:/Users/user/Downloads/docking_viz/MD_CYP3A4_50ns_final.png
+C:/Users/user/Downloads/docking_viz/MD_CYP1A2_50ns_final.png
+```
+
+### 4. ChimeraX 3D Docking Pose Visualization
+
+Generates `.cxc` command scripts for UCSF ChimeraX.
+```bash
+python3 chimerax_scripts.py
+```
+
+Then open the generated scripts in the **ChimeraX Command Line**:
+```
+open C:/Users/user/Downloads/docking_viz/viz_CYP3A4_docking.cxc
+open C:/Users/user/Downloads/docking_viz/viz_CYP1A2_docking.cxc
+```
+
+After adjusting the viewing angle, save the image:
+```
+save CYP3A4_AD4_final.png width 1600 height 1200 supersample 4
+save CYP1A2_AD4_final.png width 1600 height 1200 supersample 4
+```
+
+---
+
+## Notes
+
+- All scripts are designed to run under **WSL (Windows Subsystem for Linux)**.
+- Output paths are set to `C:/Users/user/Downloads/docking_viz/`
+  (accessible from WSL as `/mnt/c/Users/user/Downloads/docking_viz/`).
+  Modify the `OUTPUT_DIR` variable in each script if needed.
+- Fe–ligand distances reported in ChimeraX figures (CYP3A4: 3.05 Å;
+  CYP1A2: 3.43 Å) reflect the minimum Fe–ligand distances to the
+  nearest aromatic carbon, not Fe–N coordination distances,
+  due to the absence of heme iron Gasteiger parameters in AutoDock4.
+
+---
+
+## Docking Summary
+
+| System | Tool | Best ΔG (kcal/mol) | Top Cluster | Fe–C Distance (Å) |
+|---|---|---|---|---|
+| LCZ–CYP3A4 | AutoDock4 | −8.88 | 48/50 runs | 3.05 |
+| LCZ–CYP1A2 | AutoDock4 | −7.49 | 1/50 runs | 3.43 |
+
+---
+
+## MD Simulation Summary
+
+| System | Duration | RMSD Mean (Å) | RMSD SD (Å) |
+|---|---|---|---|
+| LCZ–CYP3A4 | 50 ns | 2.18 | 0.31 |
+| LCZ–CYP1A2 | 50 ns | 1.78 | 0.21 |
+
+Simulations performed with GROMACS 2022.6, CHARMM36 force field,
+TIP3P water, 310 K, 1 atm, 2 fs time step.
