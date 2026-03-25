@@ -8,7 +8,7 @@ This project introduces MTMM, a multi-task learning-based multi-representation m
 - **[MTMM-CYP Source](https://github.com/bmil-jnu/MTMM-CYP/tree/main/Model)**: The implementation of the MTMM algorithm.
 - **[Molecular Substructure Analysis](https://github.com/username/repository-name/tree/main/analysis/gradcam)**: Code and analysis results generated with Grad-CAM.
 - **[Figures](https://github.com/bmil-jnu/MTMM-CYP/tree/main/Figures)**: High-resolution figures used throughout the paper.
-- **[Docking & MD Scripts](https://github.com/bmil-jnu/MTMM-CYP/tree/main/Docking)**: Scripts for generating docking and MD simulation figures (PLIP 2D interactions, RMSD/RMSF plots, ChimeraX visualization).
+- **[Docking & MD Scripts](https://github.com/bmil-jnu/MTMM-CYP/tree/main/Analysis)**: Scripts for generating docking and MD simulation figures (PLIP 2D interactions, RMSD/RMSF plots, ChimeraX visualization).
 
 ## Model Requirements
 The project has the following requirements:
