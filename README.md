@@ -5,19 +5,30 @@ Authors: Subhin Seomun, Sunyong Yoo
 ## Description
 This project introduces MTMM, a multi-task learning-based multi-representation molecular framework that integrates graph, convolutional, and transformer-based features to accurately predict CYP450 isoform inhibitors and interpret their inhibitory mechanisms using Grad-CAM. The repository contains:
 - **[Dataset](https://github.com/bmil-jnu/MTMM-CYP/tree/main/Dataset)**: The dataset used in the paper.
-- **[MTMM-CYP Source](https://github.com/bmil-jnu/MTMM-CYP/tree/main/Model)**:  The implementation of the MTMM algorithm.
-- **[Molecular substructure Analysis](https://github.com/username/repository-name/tree/main/analysis/gradcam)**: Code and analysis results generated with Grad-CAM.
+- **[MTMM-CYP Source](https://github.com/bmil-jnu/MTMM-CYP/tree/main/Model)**: The implementation of the MTMM algorithm.
+- **[Molecular Substructure Analysis](https://github.com/username/repository-name/tree/main/analysis/gradcam)**: Code and analysis results generated with Grad-CAM.
 - **[Figures](https://github.com/bmil-jnu/MTMM-CYP/tree/main/Figures)**: High-resolution figures used throughout the paper.
+- **[Docking & MD Scripts](https://github.com/bmil-jnu/MTMM-CYP/tree/main/Docking)**: Scripts for generating docking and MD simulation figures (PLIP 2D interactions, RMSD/RMSF plots, ChimeraX visualization).
 
-## Dependency
-The project has the following dependencies:
+## Model Requirements
+The project has the following requirements:
+- `Python==3.12.5`
+- `PyTorch==2.4.1`
+- `Keras==3.5.0`
+- `Torch_Geometric==2.5.3`
+- `Tensorflow==1.5.4`
+- `scikit-learn==1.5.1`
 
-- 'Python==3.12.5'
-- 'PyTorch==2.4.1'
-- 'Keras==3.5.0'
-- 'Torch_Geometric==2.5.3'
-- 'Tensorflow==1.5.4'
-- 'scikit-learn==1.5.1'
+## Docking & MD Scripts Requirements
+- `Python >= 3.10`
+- `matplotlib`
+- `numpy`
+```bash
+pip install matplotlib numpy
+```
+
+Scripts were developed and tested under WSL (Windows Subsystem for Linux).
+For usage details, see [Docking & MD Scripts](https://github.com/bmil-jnu/MTMM-CYP/tree/main/Docking).
 
 ## Contacts
 For questions, suggestions, or feedback, please contact:
