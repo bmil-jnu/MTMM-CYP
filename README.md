@@ -28,7 +28,7 @@ pip install matplotlib numpy
 ```
 
 Scripts were developed and tested under WSL (Windows Subsystem for Linux).
-For usage details, see [Docking & MD Scripts](https://github.com/bmil-jnu/MTMM-CYP/tree/main/Docking).
+For usage details, see [Docking & MD Scripts](https://github.com/bmil-jnu/MTMM-CYP/tree/main/Analysis).
 
 ## Contacts
 For questions, suggestions, or feedback, please contact:
